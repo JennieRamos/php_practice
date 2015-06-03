@@ -58,6 +58,7 @@ if ($conn->multi_query($sql) === TRUE) {
 $conn->close();
 ?>
 
+// sql to select a record
 $sql = "SELECT id, firstname, lastname FROM MyGuests";
 $result = $conn->query($sql);
 
