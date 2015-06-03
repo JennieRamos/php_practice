@@ -38,7 +38,7 @@ if ($conn->query($sql) === TRUE) {
     echo "Error creating table: " . $conn->error;
 }
 
-$conn->close();*/
+$conn->close();*//*
 $sql = "INSERT INTO MyGuests (firstname, lastname, email)
 VALUES ('Lorie Anne', 'Castillano', 'clorieanne@gmail.com');";
 $sql .= "INSERT INTO MyGuests (firstname, lastname, email)
@@ -55,6 +55,20 @@ if ($conn->multi_query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
+$conn->close();
+?>*/
+
+$sql = "SELECT id, firstname, lastname FROM MyGuests";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+    }
+} else {
+    echo "0 results";
+}
 $conn->close();
 ?>
 <br>
