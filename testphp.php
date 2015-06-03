@@ -56,7 +56,7 @@ if ($conn->multi_query($sql) === TRUE) {
 }
 
 $conn->close();
-?>*/
+?>
 
 $sql = "SELECT id, firstname, lastname FROM MyGuests";
 $result = $conn->query($sql);
@@ -69,6 +69,29 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
+$conn->close();
+?>
+
+// sql to delete a record
+$sql = "DELETE FROM MyGuests WHERE id=4";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Record deleted successfully";
+} else {
+    echo "Error deleting record: " . $conn->error;
+}
+
+$conn->close();
+?>*/
+
+$sql = "UPDATE MyGuests SET lastname='Millan' WHERE id=3";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Record updated successfully";
+} else {
+    echo "Error updating record: " . $conn->error;
+}
+
 $conn->close();
 ?>
 <br>
