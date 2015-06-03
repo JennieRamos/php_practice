@@ -40,10 +40,17 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();*/
 $sql = "INSERT INTO MyGuests (firstname, lastname, email)
-VALUES ('Jennie', 'Ramos', 'jennieramos06@gmail.com')";
+VALUES ('Lorie Anne', 'Castillano', 'clorieanne@gmail.com');";
+$sql .= "INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('John', 'Doe', 'john@example.com');";
+$sql .= "INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('Mary', 'Moe', 'mary@example.com');";
+$sql .= "INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('Julie', 'Dooley', 'julie@example.com')";
 
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
+if ($conn->multi_query($sql) === TRUE) {
+	//$last_id = $conn->insert_id;
+    echo "New record created successfully."; // Last inserted ID is: " . $last_id;
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
